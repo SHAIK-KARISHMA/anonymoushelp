@@ -1,0 +1,419 @@
+{
+  "intents": [
+    {
+      "intent": "food",
+      "examples": [
+        {
+          "text": "food"
+        },
+        {
+          "text": "i need help on food"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "hi",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "welcome"
+        },
+        {
+          "text": "hi"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "yes",
+      "examples": [
+        {
+          "text": "yes"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "available_food",
+      "examples": [
+        {
+          "text": "details"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "availability_sanitary",
+      "examples": [
+        {
+          "text": "is masks are available"
+        },
+        {
+          "text": "availability of sanitizers"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "sanitary_distribution",
+      "examples": [
+        {
+          "text": "free mask"
+        },
+        {
+          "text": "i want free mask"
+        },
+        {
+          "text": "i want free sanitizers"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "area",
+      "examples": [
+        {
+          "text": "mumbai"
+        },
+        {
+          "text": "place"
+        },
+        {
+          "text": "delhi"
+        },
+        {
+          "text": "hyderabad"
+        },
+        {
+          "text": "ibrahimpatnam"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "food_distribution",
+      "examples": [
+        {
+          "text": "food distribution details"
+        },
+        {
+          "text": "where i can found free food distribution places"
+        },
+        {
+          "text": "free food distribution"
+        },
+        {
+          "text": "hungry"
+        }
+      ],
+      "description": "details to approach the food distribution place"
+    },
+    {
+      "intent": "complete",
+      "examples": [
+        {
+          "text": "thank you"
+        },
+        {
+          "text": "okay that all i needed"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "cloth_distribution",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "name",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "place",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "contact details",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "avail_sanitary",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "masks available",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "sanitizers available",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "food",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "distributed person name",
+          "synonyms": [
+            "organisation name"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "conatact details",
+          "synonyms": [
+            "phone number",
+            "mail id"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "place of distibution",
+          "synonyms": [
+            "area "
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sanitary",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "contact details",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "name",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "area",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "name:abc,  contact details:55555555555 , place:ameerpet ,hyderabad near big bazar"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "#available_food",
+      "dialog_node": "node_10_1590560852937",
+      "previous_sibling": "node_5_1590559942439"
+    },
+    {
+      "type": "standard",
+      "title": "thank you",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "thank you. Have a nice day!!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#complete",
+      "dialog_node": "node_10_1590562451490",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "hello sir/madam! Welcome to Swasthseva . How can I help you?",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "welcome !!!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome",
+      "previous_sibling": "node_7_1590558463861"
+    },
+    {
+      "type": "standard",
+      "title": "input taken",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Yes Sir/ madam! we have some people details who is looking forward to help"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#area",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1590559942439",
+      "previous_sibling": "node_5_1590559307003"
+    },
+    {
+      "type": "standard",
+      "title": " food",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "sure sir/madam! please enter an area where you want to help?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#food",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_5_1590559307003",
+      "previous_sibling": "node_8_1590558885848"
+    },
+    {
+      "type": "standard",
+      "title": "food distribution details",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "sure sir/madam ..choose  the requirement to get details"
+              },
+              {
+                "text": "food //  sanitary products // clothes "
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "multiline"
+          }
+        ]
+      },
+      "conditions": "#food_distribution",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_8_1590558885848",
+      "previous_sibling": "node_10_1590562451490"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_10_1590560852937",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello sir/madam!Welcome to Swasthseva.How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#hi",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_7_1590558463861"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "My first skill",
+  "language": "en",
+  "description": ""
+}
